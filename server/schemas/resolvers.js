@@ -54,7 +54,17 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-  }
-}
+    deleteBook: async (parent, { book }, context) => {
+      if (context.user) {
+        return Profile.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { skills: skill } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+  },
+};
 
 module.exports = resolvers;
