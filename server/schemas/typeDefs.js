@@ -36,5 +36,5 @@ const typeDefs = gql`
     deleteBook(bookId: String!): Book
   }
 `;
-
+//? do we need to require a some of the fields in saveBook?
 module.exports = typeDefs;
