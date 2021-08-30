@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+import { gql } from '@apollo/client';
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -38,7 +38,7 @@ export const SAVE_BOOK = gql`
 `;
 
 export const REMOVE_BOOK = gql`
-  mutator deleteBook($bookId: String!) {
+  mutation deleteBook($bookId: String!) {
     deleteBook(bookId: $bookId) {
       bookId
       title

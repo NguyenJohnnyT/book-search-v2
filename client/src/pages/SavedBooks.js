@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
-
-import { useMutation, useQuery, userMuation } from '@apollo/client'; //! APOLLO USEQUERY
+import {  useParams } from 'react-router-dom'
+import { useMutation, useQuery, } from '@apollo/client'; //! APOLLO USEQUERY
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/MERN/queries';
 import { REMOVE_BOOK } from '../utils/MERN/mutations'
 // import { getMe, deleteBook } from '../utils/API';
@@ -9,11 +9,12 @@ import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
+  const { username } = useParams();
   const [userData, setUserData] = useState({});
-
+  //!USERNAME?
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
-  const { loading, data } = useQuery(
+  const { loading, data } = useQuery(QUERY_ME,
     {
       variables: { username: username }
     }
@@ -41,7 +42,7 @@ const SavedBooks = () => {
 
     try {
       // const response = await deleteBook(bookId, token);
-      const { data } = await removeBook({
+      const { updatedUser } = await removeBook({
         variables: { bookId }
       });
 
