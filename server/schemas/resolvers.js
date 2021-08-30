@@ -12,9 +12,10 @@ const resolvers = {
       return User.findOne({ username }).populate('savedBooks');
     },
     me: async (parent, args, context) => {
+      console.log('me context.user resolvers', context.user);
       if (context.user) {
         return User.findOne({ _id: context.user._id })
-        .populate('savedBooks');
+        .populate('savedBooks'); //check
       }
       throw new AuthenticationError('You must be logged in!');
     }
@@ -26,7 +27,7 @@ const resolvers = {
       const token = signToken(user);
       return {token, user };
     },
-    login: async (parent, { email, password }) => {
+    login: async (parent, { username, email, password }) => {
       const user = await User.findOne({ email });
 
       if (!user) {
@@ -44,6 +45,7 @@ const resolvers = {
       return { token, user };
     },
     saveBook: async (parent, { bookData }, context) => {
+      console.log('bookdata saveBook resolvers', bookData);
       if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: context.user._id },
@@ -55,6 +57,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     deleteBook: async (parent, { bookId }, context) => {
+      console.log('bookId deleteBook resolver', bookId)
       if (context.user) {
         return Profile.findOneAndUpdate(
           { _id: context.user._id },

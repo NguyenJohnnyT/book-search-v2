@@ -41,9 +41,9 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    login(username: String, email: String, password: String!): Auth
     saveBook(bookData: BookInput!): User
-    deleteBook(bookId: String!): Book
+    deleteBook(bookId: String!): User
   }
 `;
 //? do we need to require a some of the fields in saveBook?
