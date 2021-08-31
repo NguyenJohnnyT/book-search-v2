@@ -55,8 +55,6 @@ The graphql playground can be accessed via [localhost](http://www.localhost:3001
 <h4> A video demonstration </h4>
 <img src = './readmeAssets/demonstration.gif'>
 
-Enter the name of the transactions and their amounts.  Click add funds or subtract funds to record into the database.
-
 Deployed application: [click here.](https://jtn-book-search.herokuapp.com/)
 
 Github repository: [click here.](https://github.com/NguyenJohnnyT/book-search-v2)
