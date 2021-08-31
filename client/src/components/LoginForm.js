@@ -26,7 +26,6 @@ const LoginForm = () => {
       event.preventDefault();
       event.stopPropagation();
     }
-    console.log(form);
     try {
       const { data } = await login({ //use hook
         variables: { ...userFormData },
@@ -34,7 +33,6 @@ const LoginForm = () => {
 
       Auth.login(data.login.token);
     } catch (err) {
-      console.log('oh no');
       console.error(err);
     }
 

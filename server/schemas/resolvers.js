@@ -12,7 +12,6 @@ const resolvers = {
       return User.findOne({ username }).populate('savedBooks');
     },
     me: async (parent, args, context) => {
-      console.log('me context.user resolvers', context.user);
       if (context.user) {
         return User.findOne({ _id: context.user._id })
         .populate('savedBooks'); //check
@@ -44,12 +43,11 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, { bookData }, context) => {
-      console.log('bookdata saveBook resolvers', bookData);
+    saveBook: async (parent, args, context) => {
       if (context.user) {
-        return Profile.findOneAndUpdate(
+        return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { savedBooks: bookData } },
+          { $addToSet: { savedBooks: args } },
           { new: true, runValidators: true }
         )
       }
@@ -57,11 +55,10 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     deleteBook: async (parent, { bookId }, context) => {
-      console.log('bookId deleteBook resolver', bookId)
       if (context.user) {
-        return Profile.findOneAndUpdate(
+        return User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedBooks: bookId } },
+          { $pull: { savedBooks: {bookId} } },
           { new: true }
         );
       }
