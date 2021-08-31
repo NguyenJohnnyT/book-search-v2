@@ -13,17 +13,19 @@ Use the google book search API to search and save books to your personal account
 
 ## Description
 
-Utilize the google book API to search and find books you like.  Create an account to save and delete favorite books.
+Utilize the google book API to search and find books you like.  Create an account to save and delete favorite books.  Accounts are secured via jsonwebtokens.
 
-Screenshots:
+Screenshot:
 
 <h4> Home Screen </h4>
-<img src ='#'>
+<img src ='./readmeAssets/front_page.png'/>
 
+<h4> Profile </h4>
+<img src='./readmeAssets/profile.png'/>
 
 ## Installation
 
-This application is run via `Node.js` and `Express`.
+This application is run via MERN (`MongoDB`, `Express`, `React`, `Nodejs`).
 
 
 NPM packages required (`npm i` to install all the packages):
@@ -51,7 +53,7 @@ The graphql playground can be accessed via [localhost](http://www.localhost:3001
 ## Usage
 
 <h4> A video demonstration </h4>
-<img src = '#'>
+<img src = './readmeAssets/demonstration.gif'>
 
 Enter the name of the transactions and their amounts.  Click add funds or subtract funds to record into the database.
 
